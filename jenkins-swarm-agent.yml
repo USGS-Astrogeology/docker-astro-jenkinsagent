@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+
+  jenkins-agents:
+    image: usgsastro/jenkinsagent
+    environment:
+      - USER_NAME_SECRET=/run/secrets/${JENKINS_USER_SECRET:-jenkins-user}
+      - PASSWORD_SECRET=/run/secrets/${JENKINS_PASS_SECRET:-jenkins-pass}
+      - COMMAND_OPTIONS=-master http://astro-ci.wr.usgs.gov -labels 'docker' -executors 5
+      - DOCKER_HOST=tcp://130.118.161.92:2376
+      - DOCKER_TLS_VERIFY=1
+    volumes:
+      - /var/lib/dockervols/.docker:/root/.docker
+      - /var/lib/dockervols/jenkins-agent:/workspace
+    secrets:
+      - jenkins-user
+      - jenkins-pass
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == worker]
+
+secrets:
+  jenkins-user:
+    external: true
+  jenkins-pass:
+    external: true
