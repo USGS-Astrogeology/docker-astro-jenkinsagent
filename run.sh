@@ -1,5 +1,7 @@
+#!/bin/sh
+
 if [ -f "${USER_NAME_SECRET}" ]; then
-    read USR < ${USER_NAME_SECRET}    
+    read USR < ${USER_NAME_SECRET}
     COMMAND_OPTIONS="${COMMAND_OPTIONS} -username $USR"
 fi
 
