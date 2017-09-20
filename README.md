@@ -13,7 +13,7 @@ Either export or set the following env variables
 * DOCKER_HOST
 * DOCKER_TLS_VERIFY
 
-An example service start-up using secrest for jenkins auth
+An example service start-up using secrets for jenkins auth
 
 docker service create \
 --name "jenkins-agent" \
