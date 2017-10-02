@@ -5,8 +5,8 @@ services:
   jenkins-agents:
     image: usgsastro/jenkinsagent
     environment:
-      - COMMAND_OPTIONS="-master http://${MASTER_IP}:8080 -labels 'docker' -executors 5"
-      - DOCKER_HOST="tcp://${MASTER_IP}:2376"
+      - COMMAND_OPTIONS=-master http://astro-ci.wr.usgs.gov -labels 'docker' -executors 5
+      - DOCKER_HOST=tcp://130.118.161.92:2376
       - DOCKER_TLS_VERIFY=1
     volumes:
       - /var/lib/dockervols/.docker:/root/.docker
