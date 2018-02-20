@@ -9,7 +9,7 @@ services:
       - DOCKER_HOST=tcp://130.118.161.92:2376
       - DOCKER_TLS_VERIFY=1
     volumes:
-      - /var/lib/dockervols/.docker:/root/.docker
+      - /var/lib/dockervols/.docker:/home/jenkins/.docker
       - /var/lib/dockervols/jenkins-agent:/workspace
     deploy:
       mode: global
