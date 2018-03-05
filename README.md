@@ -25,6 +25,6 @@ docker service create \
 -e "USER_NAME_SECRET=/run/secrets/jenkins-user" \
 -e "PASSWORD_SECRET=/run/secrets/jenkins-pass" \
 -e "COMMAND_OPTIONS=-master <your jenkins url> -labels 'docker' -executors 5" \
--e "DOCKER_HOST=tcp://<swarm master ip>:2376" \
+-e "DOCKER_HOST=tcp://<remote docker host ip>:2376" \
 -e "DOCKER_TLS_VERIFY=1" \
 usgsastro/jenkinsagent
